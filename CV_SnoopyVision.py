@@ -14,6 +14,14 @@ CATCH_RADIUS = 60 # closenes of fingertip
 SPEED = 15 # pixels per frame of sprite
 CAUGHT_DISPLAY_TIME = 1.0 # seconds to show the "caught" pose 
 
+# resizeable feature
+cap = cv2.VideoCapture(0)
+frame_w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)) or 640
+frame_h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)) or 480
+
+cv2.namedWindow("SnoopyVision by Julia", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("SnoopyVision by Julia", frame_w, frame_h)
+
 # functions
 def load_sprite(path, target_size):
     if not os.path.exists(path):
@@ -155,4 +163,5 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+cap.release()
 cv2.destroyAllWindows()
