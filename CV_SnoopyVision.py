@@ -107,8 +107,8 @@ while True:
     # snoopy catch logic
     fingertip = None
     if results.multi_hand_landmarks:
+        # hand skeleton
         for hand_landmarks in results.multi_hand_landmarks:
-            # Draw the full hand skeleton (dots + green connecting lines)
             mp_drawing.draw_landmarks(
                 frame,
                 hand_landmarks,
